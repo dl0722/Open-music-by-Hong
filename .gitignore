@@ -1,0 +1,13 @@
+# PyInstaller output
+dist/OpenMusic/_internal/
+dist/OpenMusic/.cache/
+dist/OpenMusic/*.exe
+dist/OpenMusic/*.lnk
+
+# Python cache
+__pycache__/
+*.pyc
+.cache/
+
+# Temp files
+*.tmp

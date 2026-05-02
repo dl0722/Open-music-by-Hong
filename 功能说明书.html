@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OpenMusic v4.8 功能说明书</title>
+<style>
+body{font-family:-apple-system, 'Microsoft YaHei UI', sans-serif;max-width:800px;margin:0 auto;padding:20px;background:#101216;color:#F4F7FB;line-height:1.8}
+h1{color:#8FE7FF;border-bottom:2px solid #4DE1C1;padding-bottom:8px}
+h2{color:#4DE1C1;margin-top:30px}
+h3{color:#FFB86B}
+table{width:100%;border-collapse:collapse;margin:10px 0;background:#1B2029;border-radius:8px}
+td,th{border:1px solid #2B3340;padding:8px 12px;text-align:left}
+th{background:#242B36;color:#8FE7FF}
+code{background:#2B3340;padding:2px 6px;border-radius:4px;color:#FFB86B;font-size:0.9em}
+ul{padding-left:20px}
+li{margin:4px 0}
+.tag{display:inline-block;background:#4DE1C1;color:#101216;padding:2px 10px;border-radius:12px;font-size:0.8em;font-weight:bold;margin-right:4px}
+.footer{margin-top:40px;padding-top:16px;border-top:1px solid #2B3340;color:#6F7B8D;font-size:0.9em;text-align:center}
+</style>
+</head>
+<body>
+
+<h1>🎵 OpenMusic v4.8 — 功能说明书</h1>
+<p style="color:#B9C3D4">曜石玻璃潮流增强版 · PySide6 + pygame + numpy + mutagen + Pillow</p>
+
+<h2>一、基础信息</h2>
+<ul>
+<li><span class="tag">格式</span> MP3 / WAV / FLAC / OGG / AAC / M4A</li>
+<li><span class="tag">系统</span> Windows (macOS/Linux 待适配)</li>
+</ul>
+
+<h2>二、音乐管理</h2>
+
+<h3>1. 扫描曲库</h3>
+<ul>
+<li>程序启动时自动扫描<strong>同目录及子文件夹</strong>内的音乐文件</li>
+<li>自动跳过 .cache、_internal 等系统文件夹</li>
+</ul>
+
+<h3>2. 歌手识别（三级智能）</h3>
+<ul>
+<li><strong>一级</strong>：读取 ID3 标签中的歌手信息</li>
+<li><strong>二级</strong>：按<strong>父文件夹名</strong>识别（最可靠）</li>
+<li><strong>三级</strong>：从文件名解析（<code>歌名 - 歌手.mp3</code> 格式）</li>
+</ul>
+
+<h3>3. 封面管理</h3>
+<ul>
+<li>自动提取 MP3/FLAC 专辑封面</li>
+<li>缓存封面到 .cache 文件夹</li>
+<li>根据封面主色调动态调整界面氛围光</li>
+</ul>
+
+<h3>4. 拖拽添加</h3>
+<ul>
+<li>从文件管理器拖拽音乐文件或文件夹到窗口</li>
+</ul>
+
+<h3>5. 拖拽排序</h3>
+<ul>
+<li>歌曲列表支持拖拽调整播放顺序</li>
+</ul>
+
+<h3>6. 搜索</h3>
+<ul>
+<li>按<strong>歌名</strong>和<strong>歌手</strong>实时过滤</li>
+<li>快捷键 <code>Ctrl+F</code> 聚焦搜索框</li>
+</ul>
+
+<h3>7. 排序</h3>
+<ul>
+<li>循环切换：歌名↑↓ → 歌手↑↓ → 时长↑↓</li>
+</ul>
+
+<h2>三、播放控制</h2>
+
+<h3>基本控制</h3>
+<ul>
+<li><strong>播放/暂停</strong>：底部圆形按钮 或 <code>Space</code> 键</li>
+<li><strong>上一首</strong>：⏮ 按钮 或 <code>←</code> 键</li>
+<li><strong>下一首</strong>：⏭ 按钮 或 <code>→</code> 键</li>
+</ul>
+
+<h3>进度控制</h3>
+<ul>
+<li>波形进度条，支持点击跳转和拖动</li>
+<li>显示当前时间 / 总时长</li>
+</ul>
+
+<h3>播放模式（4种）</h3>
+<ul>
+<li><strong>顺序播放</strong> — 播完列表停止</li>
+<li><strong>列表循环</strong> — 播完重头开始</li>
+<li><strong>单曲循环</strong> — 单曲无限重复</li>
+<li><strong>随机漫游</strong> — 随机跳转</li>
+</ul>
+
+<h3>倍速播放</h3>
+<ul>
+<li>1×（正常）→ 1.5× → 2× → 0.5×</li>
+</ul>
+
+<h3>睡眠定时</h3>
+<ul>
+<li>30 / 60 / 90 分钟后自动停止播放</li>
+</ul>
+
+<h2>四、音效与可视化</h2>
+
+<h3>10段均衡器</h3>
+<ul>
+<li>31Hz ~ 16KHz，每段 ±12dB</li>
+<li>5种预设：Normal / Pop / Rock / Bass / Vocal</li>
+</ul>
+
+<h3>频谱可视化（5种模式）</h3>
+<ul>
+<li><strong>Bars</strong> — 柱状频谱</li>
+<li><strong>Ring</strong> — 环形频谱</li>
+<li><strong>Wave</strong> — 波形</li>
+<li><strong>3D Bars</strong> — 3D 柱状</li>
+<li><strong>Particles</strong> — 粒子星云</li>
+</ul>
+
+<h3>氛围光效</h3>
+<ul>
+<li>背景径向渐变 + 噪点纹理</li>
+<li>播放时根据封面色调动态光晕</li>
+<li>粒子星云 + 爆裂 + 波纹效果</li>
+</ul>
+
+<h2>五、导航面板</h2>
+<table>
+<tr><th>功能</th><th>说明</th></tr>
+<tr><td>全部音乐</td><td>完整曲库列表</td></tr>
+<tr><td>歌手</td><td>按歌手分组，显示歌曲数</td></tr>
+<tr><td>专辑</td><td>网格卡片视图</td></tr>
+<tr><td>随机播放</td><td>随机播放一首</td></tr>
+<tr><td>播放历史</td><td>最近50首播放记录</td></tr>
+<tr><td>收藏</td><td>已收藏的歌曲</td></tr>
+<tr><td>最近添加</td><td>最新加入的50首</td></tr>
+</table>
+
+<h2>六、信息面板</h2>
+<ul>
+<li><strong>统计条</strong>：曲库数 / 歌手数 / 收藏数 / 总时长 / 已听时长</li>
+<li><strong>焦点面板</strong>：Now Playing 封面 + 歌名 + 歌手 + 频谱模式</li>
+<li><strong>迷你播放信息</strong>：列表上方快捷操作（收藏♥ / 歌词 / 播放模式）</li>
+<li><strong>歌词面板</strong>：支持 .lrc 格式，自动加载同名字幕文件</li>
+</ul>
+
+<h2>七、界面操作</h2>
+<ul>
+<li><strong>迷你模式</strong>：右上角 ⏺ 缩小为仅控制栏</li>
+<li><strong>悬浮提示</strong>：鼠标悬停显示功能说明浮窗</li>
+<li><strong>灵动岛通知</strong>：操作反馈滑动动画</li>
+<li><strong>播放指示</strong>：当前行呼吸光柱 + 跳动条动画</li>
+<li><strong>歌曲行操作</strong>：悬停显示 收藏♥ / 添加＋ / 菜单⋮</li>
+</ul>
+
+<h3>键盘快捷键</h3>
+<table>
+<tr><th>按键</th><th>功能</th></tr>
+<tr><td><code>Space</code></td><td>播放 / 暂停</td></tr>
+<tr><td><code>←</code></td><td>上一首</td></tr>
+<tr><td><code>→</code></td><td>下一首</td></tr>
+<tr><td><code>Ctrl+F</code></td><td>搜索</td></tr>
+</table>
+
+<h2>八、数据持久化</h2>
+<ul>
+<li>收藏列表、播放模式、已听时长自动保存</li>
+<li>文件位置：<code>.cache/openmusic_state.json</code></li>
+</ul>
+
+<h2>九、主题风格</h2>
+<ul>
+<li>曜石玻璃配色：深色层叠 + 电光青 + 珊瑚点缀</li>
+<li>毛玻璃效果：底部栏、统计条、搜索框半透明磨砂</li>
+<li>动态光效：播放时根据封面自动调整氛围色</li>
+</ul>
+
+<div class="footer">OpenMusic v4.8 · 生成于 2026-05-02</div>
+
+</body>
+</html>
