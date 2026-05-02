@@ -2,7 +2,6 @@
 
 > 一个基于 PySide6 + pygame 的本地音乐播放器 — **颜值在线，功能齐全**
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-dl0722.github.io-ff69b4?style=flat-square)](https://dl0722.github.io)
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![PySide6](https://img.shields.io/badge/PySide6-Qt6-41CD52?style=flat-square&logo=qt&logoColor=white)](https://doc.qt.io/qtforpython/)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
@@ -79,14 +78,7 @@ Open Music/
 
 ---
 
-## 🎨 关于作者
-
-**Hong** — 数字艺术家 & 业余开发者
-
-- 🌐 作品集: [dl0722.github.io](https://dl0722.github.io)
-- 🎵 收听歌单: 就在这个播放器里 😄
-
----
+*Made by Hong — 如果觉得有用，欢迎 ⭐ Star 支持！*
 
 ## 📄 License
 
